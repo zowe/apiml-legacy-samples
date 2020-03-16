@@ -1,0 +1,49 @@
+group 'org.zowe.apiml'
+
+buildscript {
+    ext {
+        licenseGradlePluginVerion = '0.13.1'
+    }
+
+    ext.mavenRepositories = {
+        maven {
+            url artifactoryMavenRepo
+            credentials {
+                username mavenUser
+                password mavenPassword
+            }
+        }
+    }
+
+    repositories mavenRepositories
+
+    dependencies {
+        classpath "gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:${licenseGradlePluginVerion}"
+    }
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.hierynomus.license'
+
+    sourceCompatibility = 1.8
+    version = version
+
+    repositories mavenRepositories
+}
+
+apply from: 'gradle/versions.gradle'
+apply from: 'gradle/license.gradle'
+
+
+subprojects {
+    license {
+        header rootProject.file('.licence/EPL-2.0-licence-header.txt')
+        ext.year = Calendar.getInstance().get(Calendar.YEAR)
+        excludes(["**/*.yml", "**/*.yaml", "**/*.json", "**/static", "**/*.sh", "**/*.txt", "**/*.p12", "**/*.xml", "**/*.jsp", "**/*.html", "**/*.jks"])
+        mapping {
+            java = 'SLASHSTAR_STYLE'
+        }
+    }
+}

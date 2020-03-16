@@ -1,0 +1,9 @@
+rootProject.name = 'apiml-legacy-samples'
+
+include 'integration-enabler-java'
+include 'integration-enabler-spring-v1'
+include 'integration-enabler-spring-v2'
+include 'integration-enabler-spring-v1-sample-app'
+include 'helloworld-jersey'
+include 'helloworld-spring'
+include 'helloworld-expressjs'

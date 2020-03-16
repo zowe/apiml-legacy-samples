@@ -1,0 +1,23 @@
+ext.projectsNeedLicense = [
+    'helloworld-expressjs',
+    'onboarding-enabler-java-sample-app',
+    'helloworld-jersey',
+    'helloworld-spring',
+    'integration-enabler-java',
+    'integration-enabler-spring-v1',
+    'integration-enabler-spring-v1-sample-app',
+    'integration-enabler-spring-v2',
+]
+
+configure(subprojects.findAll { it.name in projectsNeedLicense }) {
+    tasks.withType(Jar) {
+        metaInf {
+            from rootProject.file("LICENSE")
+        }
+
+        manifest {
+            attributes "Bundle-License": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+    }
+
+}

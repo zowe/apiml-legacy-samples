@@ -1,0 +1,13 @@
+dependencies {
+    compile 'com.ca.mfaas.sdk:mfaas-common-service-core:1.1.12'
+
+    compile libraries.jackson_annotations
+    compile libraries.jackson_dataformat_yaml
+    compile libraries.eureka_client
+    compile libraries.swagger_jersey2_jaxrs
+    compile libraries.lombok
+
+    testCompile libraries.junit
+    testCompile libraries.logback_classic
+    testCompile libraries.lombok
+}
